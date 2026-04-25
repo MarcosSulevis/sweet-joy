@@ -205,3 +205,29 @@ section { padding-block: var(--space-5); }
 .product-name { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; line-height: 1.25; color: var(--color-accent); }
 .price-badge { align-self: flex-start; background: var(--color-coral); color: var(--color-white); padding: 0.25rem 0.75rem; border-radius: var(--radius-pill); font-size: 0.8rem; letter-spacing: 0.05em; font-weight: 500; }
 .product-card .btn { margin-top: auto; align-self: flex-start; padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+
+/* ===== ORDER FORM ===== */
+.order-form { max-width: 920px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: var(--space-3); background: var(--color-white); padding: var(--space-4); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+@media (min-width: 720px) {
+  .order-form { grid-template-columns: 1fr 1fr; padding: var(--space-5); gap: var(--space-3) var(--space-4); }
+  .field--full, .form-actions, .conditional, .form-status { grid-column: 1 / -1; }
+}
+
+.conditional { background: var(--color-cream); border-radius: var(--radius-md); padding: var(--space-3); border: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent); }
+.conditional legend { padding: 0 0.5rem; font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--color-primary); }
+.sub-field { display: flex; flex-direction: column; gap: 0.5rem; margin-top: var(--space-2); }
+.sub-field > label { font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); }
+.radio-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.radio-row label { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 1rem; border: 1px solid color-mix(in srgb, var(--color-accent) 18%, transparent); border-radius: var(--radius-pill); cursor: pointer; transition: border-color var(--dur-fast) var(--ease); }
+.radio-row input[type="radio"]:checked + span { font-weight: 600; }
+.radio-row label:has(input:checked) { border-color: var(--color-coral); background: color-mix(in srgb, var(--color-coral) 12%, transparent); }
+.radio-row input, .checkbox-grid input { accent-color: var(--color-coral); }
+.checkbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; }
+.checkbox-grid label { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 0.85rem; border: 1px solid color-mix(in srgb, var(--color-accent) 18%, transparent); border-radius: var(--radius-sm); cursor: pointer; font-size: 0.92rem; transition: border-color var(--dur-fast) var(--ease); }
+.checkbox-grid label:has(input:checked) { border-color: var(--color-coral); background: color-mix(in srgb, var(--color-coral) 12%, transparent); }
+
+.form-status { padding: var(--space-3); border-radius: var(--radius-md); font-size: 0.95rem; line-height: 1.6; }
+.form-status.is-success { background: color-mix(in srgb, var(--color-coral) 14%, transparent); color: var(--color-accent); border: 1px solid var(--color-coral); }
+.form-status.is-error { background: color-mix(in srgb, var(--color-error) 10%, transparent); color: var(--color-error); border: 1px solid color-mix(in srgb, var(--color-error) 50%, transparent); }
+.form-status a { color: inherit; text-decoration: underline; font-weight: 500; }
+.form-status a:hover { opacity: 0.8; }

@@ -133,6 +133,197 @@
     return { render };
   })();
 
+  // ---------- FORM HANDLER ----------
+  const formHandler = (() => {
+    function getForm() { return document.getElementById("orderForm"); }
+    function getStatus() { return document.getElementById("formStatus"); }
+    function tr(en, pt) { return document.documentElement.lang === "pt" ? pt : en; }
+
+    function showConditionals() {
+      const select = document.getElementById("f-interest");
+      if (!select) return;
+      const current = select.value;
+      document.querySelectorAll(".conditional").forEach(el => {
+        const showWhen = (el.dataset.showWhen || "").split(",");
+        el.hidden = !showWhen.includes(current);
+      });
+    }
+
+    function enforceFillingsMax() {
+      const grid = getForm().querySelector(".checkbox-grid[data-max]");
+      if (!grid) return;
+      const max = parseInt(grid.dataset.max, 10);
+      grid.addEventListener("change", () => {
+        const boxes = grid.querySelectorAll("input[type=checkbox]");
+        const count = grid.querySelectorAll("input[type=checkbox]:checked").length;
+        boxes.forEach(b => { if (!b.checked) b.disabled = count >= max; });
+      });
+    }
+
+    function validate() {
+      const f = getForm();
+      let ok = true;
+      f.querySelectorAll(".field").forEach(field => field.classList.remove("field--error"));
+
+      const name = f.elements["name"];
+      if (!name || !name.value.trim()) { name && name.closest(".field").classList.add("field--error"); ok = false; }
+
+      const email = f.elements["email"];
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email && email.closest(".field").classList.add("field--error"); ok = false; }
+
+      const date = f.elements["event_date"];
+      if (date) {
+        if (!date.value) {
+          date.closest(".field").classList.add("field--error"); ok = false;
+        } else {
+          const picked = new Date(date.value + "T00:00:00");
+          const minDate = new Date(); minDate.setHours(0, 0, 0, 0); minDate.setDate(minDate.getDate() + 7);
+          if (picked < minDate) { date.closest(".field").classList.add("field--error"); ok = false; }
+        }
+      }
+
+      const interest = f.elements["product_interest"];
+      if (!interest || !interest.value) { interest && interest.closest(".field").classList.add("field--error"); ok = false; }
+
+      return ok;
+    }
+
+    function serializeForm() {
+      const fd = new FormData(getForm());
+      const obj = {};
+      for (const [k, v] of fd.entries()) {
+        if (k === "fillings") { obj.fillings = obj.fillings || []; obj.fillings.push(v); }
+        else { obj[k] = v; }
+      }
+      return obj;
+    }
+
+    function buildWhatsAppUrl(data) {
+      const lang = document.documentElement.lang;
+      const lines = lang === "pt" ? [
+        "Olá Vanessa! Novo pedido pelo site Sweet & Joy:",
+        "",
+        `Nome: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Telefone: ${data.phone}` : null,
+        `Data do evento: ${data.event_date}`,
+        `Produto: ${data.product_interest}`,
+        data.cake_size ? `Tamanho: ${data.cake_size}` : null,
+        data.batter_flavor ? `Massa: ${data.batter_flavor}` : null,
+        data.fillings && data.fillings.length ? `Recheios: ${data.fillings.join(", ")}` : null,
+        data.docinhos_qty ? `Quantidade de docinhos: ${data.docinhos_qty}` : null,
+        data.special_requests ? `Observações: ${data.special_requests}` : null,
+      ] : [
+        "Hi Vanessa! New order from the Sweet & Joy website:",
+        "",
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : null,
+        `Event date: ${data.event_date}`,
+        `Interested in: ${data.product_interest}`,
+        data.cake_size ? `Cake size: ${data.cake_size}` : null,
+        data.batter_flavor ? `Batter: ${data.batter_flavor}` : null,
+        data.fillings && data.fillings.length ? `Fillings: ${data.fillings.join(", ")}` : null,
+        data.docinhos_qty ? `Docinhos quantity: ${data.docinhos_qty}` : null,
+        data.special_requests ? `Notes: ${data.special_requests}` : null,
+      ];
+      const msg = lines.filter(Boolean).join("\n");
+      return `https://wa.me/13369891342?text=${encodeURIComponent(msg)}`;
+    }
+
+    function applyPrefill(detail) {
+      const f = getForm();
+      if (!f) return;
+      if (detail.product) {
+        f.elements["product_interest"].value = detail.product;
+        showConditionals();
+      }
+      if (detail.size) {
+        const r = f.querySelector(`input[name=cake_size][value='${detail.size}']`);
+        if (r) r.checked = true;
+      }
+      if (detail.batter) {
+        const r = f.querySelector(`input[name=batter_flavor][value='${detail.batter}']`);
+        if (r) r.checked = true;
+      }
+      if (detail.fillings && detail.fillings.length) {
+        f.querySelectorAll("input[name=fillings]").forEach(b => { b.checked = detail.fillings.includes(b.value); });
+        const grid = f.querySelector(".checkbox-grid");
+        if (grid) grid.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      if (detail.note) {
+        const notes = f.elements["special_requests"];
+        if (notes) {
+          const prefix = detail.source === "card" ? `Interested in: ${detail.note}\n` : "";
+          notes.value = prefix + (notes.value || "");
+        }
+      }
+    }
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const statusEl = getStatus();
+      if (!validate()) {
+        statusEl.hidden = false;
+        statusEl.className = "form-status is-error";
+        statusEl.textContent = tr(
+          "Please fix the highlighted fields and try again.",
+          "Corrija os campos destacados e tente novamente."
+        );
+        statusEl.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
+      const submitBtn = document.getElementById("submitOrderBtn");
+      submitBtn.disabled = true;
+      submitBtn.textContent = tr("Sending…", "Enviando…");
+
+      const data = serializeForm();
+      const fd = new FormData(getForm());
+
+      try {
+        const resp = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
+        const json = await resp.json().catch(() => ({}));
+        if (!resp.ok || json.success === false) throw new Error(json.message || "Submission failed");
+
+        const waUrl = buildWhatsAppUrl(data);
+        statusEl.hidden = false;
+        statusEl.className = "form-status is-success";
+        statusEl.innerHTML = tr(
+          `Thank you! Your order request is in Vanessa's inbox. We've also opened WhatsApp so you can confirm directly — just tap Send. <a href="${waUrl}" target="_blank" rel="noopener">Open WhatsApp</a>`,
+          `Obrigada! Seu pedido já está na caixa da Vanessa. Também abrimos o WhatsApp para você confirmar direto — é só tocar em Enviar. <a href="${waUrl}" target="_blank" rel="noopener">Abrir WhatsApp</a>`
+        );
+        window.open(waUrl, "_blank", "noopener");
+        getForm().reset();
+        showConditionals();
+        statusEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      } catch {
+        statusEl.hidden = false;
+        statusEl.className = "form-status is-error";
+        statusEl.textContent = tr(
+          "Something went wrong. Please try again or message us on WhatsApp at (336) 989-1342.",
+          "Algo deu errado. Tente novamente ou fale com a gente no WhatsApp: (336) 989-1342."
+        );
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = tr("Send Order Request", "Enviar Pedido");
+      }
+    }
+
+    function bind() {
+      const f = getForm();
+      if (!f) return;
+      f.addEventListener("submit", handleSubmit);
+      const interestSelect = document.getElementById("f-interest");
+      if (interestSelect) interestSelect.addEventListener("change", showConditionals);
+      enforceFillingsMax();
+      showConditionals();
+      window.addEventListener("order:prefill", e => applyPrefill(e.detail));
+    }
+
+    return { bind };
+  })();
+
   // Expose DOCINHOS for other modules
   window.__SJ__ = { DOCINHOS };
 
@@ -140,5 +331,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     orderBuilder.bind();
     docinhosGrid.render();
+    formHandler.bind();
   });
 })();
