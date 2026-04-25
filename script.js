@@ -359,11 +359,59 @@
     return { init };
   })();
 
+  // ---------- I18N ----------
+  const i18n = (() => {
+    const STORAGE_KEY = "sj.lang";
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-en]").forEach(el => {
+        const text = lang === "pt" ? el.dataset.pt : el.dataset.en;
+        if (text === undefined) return;
+
+        if (el.tagName === "TITLE") {
+          document.title = text;
+        } else if (el.tagName === "META") {
+          el.setAttribute("content", text);
+        } else if (el.tagName === "OPTION") {
+          el.textContent = text;
+        } else if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+          if (el.hasAttribute("placeholder")) el.setAttribute("placeholder", text);
+        } else {
+          el.textContent = text;
+        }
+      });
+
+      document.querySelectorAll(".lang-toggle").forEach(btn => {
+        const flag = btn.querySelector(".lang-flag");
+        const label = btn.querySelector(".lang-label");
+        if (flag) flag.textContent = lang === "pt" ? "🇧🇷" : "🇺🇸";
+        if (label) label.textContent = lang === "pt" ? "PT" : "EN";
+      });
+    }
+
+    function toggle() {
+      const next = document.documentElement.lang === "pt" ? "en" : "pt";
+      localStorage.setItem(STORAGE_KEY, next);
+      applyLang(next);
+    }
+
+    function init() {
+      const saved = localStorage.getItem(STORAGE_KEY) || "en";
+      applyLang(saved);
+      document.querySelectorAll(".lang-toggle").forEach(btn => btn.addEventListener("click", toggle));
+    }
+
+    return { init, applyLang };
+  })();
+
   // Expose DOCINHOS for other modules
   window.__SJ__ = { DOCINHOS };
 
   // ---------- INIT ----------
   document.addEventListener("DOMContentLoaded", () => {
+    i18n.init();
     dripDivider.inject();
     orderBuilder.bind();
     docinhosGrid.render();
