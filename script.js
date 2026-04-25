@@ -324,13 +324,50 @@
     return { bind };
   })();
 
+  // ---------- DRIP DIVIDER ----------
+  const dripDivider = (() => {
+    const DRIP_PATH = "M0,4 C80,4 120,38 200,38 C280,38 320,4 400,4 C480,4 520,34 600,34 C680,34 720,8 800,8 C880,8 920,42 1000,42 C1080,42 1120,6 1200,6 C1280,6 1320,32 1400,32";
+
+    function inject() {
+      document.querySelectorAll("[data-drip]").forEach(el => {
+        el.innerHTML = `<svg viewBox="0 0 1400 48" preserveAspectRatio="none" aria-hidden="true"><path d="${DRIP_PATH}"/></svg>`;
+      });
+    }
+
+    return { inject };
+  })();
+
+  // ---------- SCROLL REVEAL ----------
+  const scrollReveal = (() => {
+    function init() {
+      document.querySelectorAll("section > .container, .drip-divider, .product-card, .builder-step").forEach(el => {
+        el.classList.add("reveal");
+      });
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+    }
+
+    return { init };
+  })();
+
   // Expose DOCINHOS for other modules
   window.__SJ__ = { DOCINHOS };
 
   // ---------- INIT ----------
   document.addEventListener("DOMContentLoaded", () => {
+    dripDivider.inject();
     orderBuilder.bind();
     docinhosGrid.render();
     formHandler.bind();
+    scrollReveal.init();
   });
 })();

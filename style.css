@@ -281,3 +281,34 @@ section { padding-block: var(--space-5); }
   .whatsapp-fab { right: var(--space-3); bottom: var(--space-3); }
   .back-to-top { right: var(--space-3); bottom: calc(var(--space-3) + 72px); }
 }
+
+/* ===== DRIP DIVIDER ===== */
+.drip-divider { position: relative; width: 100%; height: 48px; overflow: visible; line-height: 0; }
+.drip-divider svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.drip-divider path { stroke: var(--color-primary); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1400; stroke-dashoffset: 1400; transition: stroke-dashoffset var(--dur-slow) var(--ease); }
+.drip-divider.is-visible path { stroke-dashoffset: 0; }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity var(--dur-med) var(--ease), transform var(--dur-med) var(--ease); will-change: opacity, transform; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ===== HERO STAGGER ===== */
+.hero .hero-blob,
+.hero .hero-eyebrow,
+.hero .hero-title,
+.hero .hero-sub,
+.hero .hero-cta,
+.hero .hero-seal {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: heroFadeUp var(--dur-slow) var(--ease) forwards;
+}
+.hero .hero-blob     { animation-delay: 0ms; }
+.hero .hero-seal     { animation-delay: 150ms; }
+.hero .hero-eyebrow  { animation-delay: 300ms; }
+.hero .hero-title    { animation-delay: 450ms; }
+.hero .hero-sub      { animation-delay: 600ms; }
+.hero .hero-cta      { animation-delay: 750ms; }
+@keyframes heroFadeUp {
+  to { opacity: 1; transform: none; }
+}
