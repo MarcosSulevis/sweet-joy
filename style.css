@@ -192,3 +192,16 @@ section { padding-block: var(--space-5); }
   .builder { grid-template-columns: 1.6fr 1fr; align-items: start; }
   .builder-summary { position: sticky; top: 88px; }
 }
+
+/* ===== DOCINHOS GRID ===== */
+.card-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-3); }
+@media (min-width: 560px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.product-card { background: var(--color-white); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; border: 1px solid color-mix(in srgb, var(--color-accent) 6%, transparent); transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease); }
+.product-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--shadow-md); }
+.product-thumb { aspect-ratio: 4/3; background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 20%, var(--color-cream)) 0%, var(--color-cream) 100%); display: grid; place-items: center; color: color-mix(in srgb, var(--color-accent) 30%, transparent); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.product-body { padding: var(--space-2) var(--space-3) var(--space-3); display: flex; flex-direction: column; gap: 0.7rem; flex: 1; }
+.product-name { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; line-height: 1.25; color: var(--color-accent); }
+.price-badge { align-self: flex-start; background: var(--color-coral); color: var(--color-white); padding: 0.25rem 0.75rem; border-radius: var(--radius-pill); font-size: 0.8rem; letter-spacing: 0.05em; font-weight: 500; }
+.product-card .btn { margin-top: auto; align-self: flex-start; padding: 0.6rem 1.2rem; font-size: 0.85rem; }

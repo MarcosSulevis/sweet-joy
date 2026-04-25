@@ -96,11 +96,49 @@
     return { bind, state };
   })();
 
+  // ---------- DOCINHOS GRID ----------
+  const docinhosGrid = (() => {
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    }
+    function escapeAttr(s) {
+      return String(s).replace(/"/g, "&quot;");
+    }
+
+    function render() {
+      const grid = document.getElementById("docinhosGrid");
+      if (!grid) return;
+      grid.innerHTML = DOCINHOS.map(d => `
+        <article class="product-card">
+          <div class="product-thumb" aria-hidden="true">Photo</div>
+          <div class="product-body">
+            <h3 class="product-name" data-en="${escapeHtml(d.en)}" data-pt="${escapeHtml(d.pt)}">${escapeHtml(d.en)}</h3>
+            <span class="price-badge">$${d.price} / 100</span>
+            <button type="button" class="btn btn-ghost" data-action="order-sweet" data-name="${escapeAttr(d.en)}" data-en="Order This" data-pt="Pedir">Order This</button>
+          </div>
+        </article>
+      `).join("");
+
+      grid.addEventListener("click", e => {
+        const btn = e.target.closest("[data-action='order-sweet']");
+        if (!btn) return;
+        window.dispatchEvent(new CustomEvent("order:prefill", {
+          detail: { source: "card", product: "Gourmet Sweets", note: btn.dataset.name }
+        }));
+        const form = document.getElementById("order-form");
+        if (form) form.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    return { render };
+  })();
+
   // Expose DOCINHOS for other modules
   window.__SJ__ = { DOCINHOS };
 
   // ---------- INIT ----------
   document.addEventListener("DOMContentLoaded", () => {
     orderBuilder.bind();
+    docinhosGrid.render();
   });
 })();
