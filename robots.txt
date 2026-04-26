@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sweet-joy.thalessouto.workers.dev/sitemap.xml

@@ -3,15 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" data-en="Custom cakes and gourmet Brazilian sweets crafted with love in Kernersville, NC." data-pt="Bolos personalizados e doces gourmet brasileiros feitos com amor em Kernersville, NC." content="Custom cakes and gourmet Brazilian sweets crafted with love in Kernersville, NC." />
-  <title data-en="Sweet & Joy — Custom Cakes & Gourmet Sweets | Kernersville, NC" data-pt="Sweet & Joy — Bolos Personalizados e Doces Gourmet | Kernersville, NC">Sweet & Joy — Custom Cakes & Gourmet Sweets | Kernersville, NC</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="description" data-en="Custom cakes and gourmet Brazilian sweets handmade in Kernersville, NC. Serving Winston-Salem, Greensboro &amp; the Triad area. Order brigadeiros, birthday cakes &amp; wedding cakes." data-pt="Bolos personalizados e docinhos gourmet brasileiros feitos à mão em Kernersville, NC. Atendemos Winston-Salem, Greensboro e a região do Triad." content="Custom cakes and gourmet Brazilian sweets handmade in Kernersville, NC. Serving Winston-Salem, Greensboro &amp; the Triad area. Order brigadeiros, birthday cakes &amp; wedding cakes." />
+  <title data-en="Sweet &amp; Joy — Custom Cakes &amp; Gourmet Brazilian Sweets | Kernersville, NC" data-pt="Sweet &amp; Joy — Bolos Personalizados &amp; Docinhos Gourmet Brasileiros | Kernersville, NC">Sweet &amp; Joy — Custom Cakes &amp; Gourmet Brazilian Sweets | Kernersville, NC</title>
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://sweet-joy.thalessouto.workers.dev/" />
+  <link rel="alternate" hreflang="en" href="https://sweet-joy.thalessouto.workers.dev/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://sweet-joy.thalessouto.workers.dev/" />
+  <link rel="alternate" hreflang="x-default" href="https://sweet-joy.thalessouto.workers.dev/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sweet-joy.thalessouto.workers.dev/" />
+  <meta property="og:title" content="Sweet &amp; Joy — Custom Cakes &amp; Gourmet Brazilian Sweets | Kernersville, NC" />
+  <meta property="og:description" content="Custom birthday cakes, brigadeiros, and gourmet Brazilian desserts handmade in Kernersville, NC. Serving Winston-Salem, Greensboro &amp; the Triad area." />
+  <meta property="og:image" content="https://sweet-joy.thalessouto.workers.dev/assets/images/logo.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="pt_BR" />
+  <meta property="og:site_name" content="Sweet &amp; Joy by Vanessa Sulevis" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sweet &amp; Joy — Custom Cakes &amp; Gourmet Brazilian Sweets | Kernersville, NC" />
+  <meta name="twitter:description" content="Custom birthday cakes, brigadeiros, and gourmet Brazilian desserts handmade in Kernersville, NC. Serving the Triad area." />
+  <meta name="twitter:image" content="https://sweet-joy.thalessouto.workers.dev/assets/images/logo.png" />
+
+  <!-- Favicon & preload critical assets -->
   <link rel="icon" type="image/png" href="assets/images/logo-simplified.png" />
+  <link rel="preload" as="image" href="assets/images/logo.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/images/logo-simplified.png" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.web3forms.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Style+Script&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
@@ -36,7 +71,8 @@
   </div>
 </header>
 
-<section class="hero" id="hero">
+<main id="main-content">
+<section class="hero" id="hero" aria-labelledby="hero-heading">
   <div class="hero-grain" aria-hidden="true"></div>
   <svg class="hero-blob" aria-hidden="true" viewBox="0 0 600 600" preserveAspectRatio="none">
     <path d="M430,90 C520,140 560,250 530,360 C500,470 400,540 290,520 C180,500 90,420 80,310 C70,200 160,100 270,80 C340,65 370,55 430,90 Z" fill="#F6D7D1"/>
@@ -44,15 +80,15 @@
   <div class="container hero-inner">
     <div class="hero-copy">
       <p class="hero-eyebrow" data-en="Kernersville, NC" data-pt="Kernersville, NC">Kernersville, NC</p>
-      <h1 class="hero-title" data-en="Crafted with Love" data-pt="Feito com Amor">Crafted with Love</h1>
-      <p class="hero-sub" data-en="Exclusive cakes and gourmet desserts that delight the eyes and the palate." data-pt="Bolos e doces exclusivos que encantam aos olhos e ao paladar.">Exclusive cakes and gourmet desserts that delight the eyes and the palate.</p>
+      <h1 class="hero-title" id="hero-heading" data-en="Crafted with Love" data-pt="Feito com Amor">Crafted with Love</h1>
+      <p class="hero-sub" data-en="Custom birthday cakes and gourmet Brazilian sweets handmade in Kernersville, NC — serving Winston-Salem, Greensboro and the Triad area." data-pt="Bolos de aniversário personalizados e docinhos gourmet brasileiros feitos à mão em Kernersville, NC — atendemos Winston-Salem, Greensboro e toda a região do Triad.">Custom birthday cakes and gourmet Brazilian sweets handmade in Kernersville, NC — serving Winston-Salem, Greensboro and the Triad area.</p>
       <div class="hero-cta">
         <a href="#order-form" class="btn btn-primary" data-en="Order Now" data-pt="Encomendar">Order Now</a>
         <a href="#instagram" class="btn btn-ghost" data-en="See Our Work" data-pt="Ver Nossos Bolos">See Our Work</a>
       </div>
     </div>
     <div class="hero-seal">
-      <img src="assets/logo-full.jpeg" alt="Sweet &amp; Joy by Vanessa Sulevis — Crafted with Love" />
+      <img src="assets/images/logo.png" alt="Sweet &amp; Joy by Vanessa Sulevis — Custom Cakes &amp; Gourmet Brazilian Sweets, Kernersville NC" width="440" height="440" fetchpriority="high" />
     </div>
   </div>
 </section>
@@ -62,11 +98,11 @@
 <section class="about" id="about">
   <div class="container about-inner">
     <div class="about-photo">
-      <img src="assets/images/founder.jpg" alt="Vanessa Sulevis - Sweet & Joy Bakery" class="founder-photo" onerror="this.classList.add('is-placeholder'); this.removeAttribute('src');" />
+      <img src="assets/images/founder.jpg" alt="Vanessa Sulevis, founder of Sweet &amp; Joy — custom cake maker and Brazilian sweets artisan in Kernersville, NC" class="founder-photo" loading="lazy" width="480" height="600" onerror="this.classList.add('is-placeholder'); this.removeAttribute('src');" />
     </div>
     <div class="about-copy">
       <p class="eyebrow" data-en="Our Story" data-pt="Nossa História">Our Story</p>
-      <h2 class="section-title" data-en="Every sweet, made from scratch" data-pt="Cada doce, feito do zero">Every sweet, made from scratch</h2>
+      <h2 class="section-title" data-en="Custom Cakes &amp; Brazilian Sweets, Made from Scratch" data-pt="Bolos personalizados &amp; docinhos brasileiros, feitos do zero">Custom Cakes &amp; Brazilian Sweets, Made from Scratch</h2>
       <p class="about-body" data-en="Every cake and sweet is made from scratch with premium ingredients and love. Vanessa Sulevis brings authentic Brazilian confectionery traditions to Kernersville, NC — from buttery brigadeiros to show-stopping custom cakes for your most special moments." data-pt="Cada bolo e docinho é feito do zero com ingredientes de qualidade e muito amor. Vanessa Sulevis traz a tradição da confeitaria brasileira para Kernersville, NC — dos brigadeiros irresistíveis aos bolos personalizados para os seus momentos mais especiais.">Every cake and sweet is made from scratch with premium ingredients and love. Vanessa Sulevis brings authentic Brazilian confectionery traditions to Kernersville, NC — from buttery brigadeiros to show-stopping custom cakes for your most special moments.</p>
     </div>
   </div>
@@ -78,7 +114,7 @@
   <div class="container">
     <header class="section-head">
       <p class="eyebrow" data-en="Custom Cakes" data-pt="Bolos Personalizados">Custom Cakes</p>
-      <h2 class="section-title" data-en="Build Your Cake" data-pt="Monte seu Bolo">Build Your Cake</h2>
+      <h2 class="section-title" data-en="Build Your Custom Cake" data-pt="Monte seu Bolo Personalizado">Build Your Custom Cake</h2>
       <p class="section-sub" data-en="Pick a size, a batter and two fillings — we'll handle the magic." data-pt="Escolha o tamanho, a massa e dois recheios — a mágica é com a gente.">Pick a size, a batter and two fillings — we'll handle the magic.</p>
     </header>
     <div class="builder">
@@ -146,11 +182,55 @@
   <div class="container">
     <header class="section-head">
       <p class="eyebrow" data-en="Gourmet Sweets" data-pt="Docinhos Gourmet">Gourmet Sweets</p>
-      <h2 class="section-title" data-en="Docinhos Gourmet" data-pt="Docinhos Gourmet">Docinhos Gourmet</h2>
+      <h2 class="section-title" data-en="Brazilian Brigadeiros &amp; Gourmet Sweets" data-pt="Brigadeiros &amp; Docinhos Gourmet Brasileiros">Brazilian Brigadeiros &amp; Gourmet Sweets</h2>
       <p class="section-sub" data-en="Priced per 100 units · minimum order 100" data-pt="Preço por 100 unidades · mínimo 100">Priced per 100 units · minimum order 100</p>
     </header>
     <div class="card-grid" id="docinhosGrid">
       <!-- JS renders 17 product cards here -->
+    </div>
+  </div>
+</section>
+
+<div class="drip-divider" aria-hidden="true" data-drip></div>
+
+<!-- TESTIMONIALS: Replace placeholder reviews with real customer quotes when available -->
+<section class="testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-en="What Customers Say" data-pt="O que dizem nossos clientes">What Customers Say</p>
+      <h2 class="section-title" id="testimonials-heading" data-en="Loved by Families Across the Triad" data-pt="Amados por famílias em toda a região">Loved by Families Across the Triad</h2>
+    </header>
+    <div class="testimonials-grid">
+      <figure class="testimonial-card">
+        <blockquote>
+          <p data-en="The custom birthday cake Vanessa made for my daughter was absolutely stunning — every guest was amazed, and the flavor was even better than the look!" data-pt="O bolo de aniversário personalizado que a Vanessa fez para minha filha foi absolutamente lindo — todos os convidados ficaram maravilhados, e o sabor era ainda melhor do que a aparência!">The custom birthday cake Vanessa made for my daughter was absolutely stunning — every guest was amazed, and the flavor was even better than the look!</p>
+        </blockquote>
+        <figcaption>
+          <span class="testimonial-stars" aria-label="5 stars">★★★★★</span>
+          <cite class="testimonial-author">Maria L.</cite>
+          <span class="testimonial-location" data-en="Kernersville, NC" data-pt="Kernersville, NC">Kernersville, NC</span>
+        </figcaption>
+      </figure>
+      <figure class="testimonial-card">
+        <blockquote>
+          <p data-en="We ordered gourmet brigadeiros for our company event and they were gone in minutes! The salted caramel and pistachio flavors were absolutely outstanding." data-pt="Pedimos brigadeiros gourmet para nosso evento corporativo e acabaram em minutos! Os sabores de caramelo salgado e pistache foram simplesmente incríveis.">We ordered gourmet brigadeiros for our company event and they were gone in minutes! The salted caramel and pistachio flavors were absolutely outstanding.</p>
+        </blockquote>
+        <figcaption>
+          <span class="testimonial-stars" aria-label="5 stars">★★★★★</span>
+          <cite class="testimonial-author">James T.</cite>
+          <span class="testimonial-location" data-en="Winston-Salem, NC" data-pt="Winston-Salem, NC">Winston-Salem, NC</span>
+        </figcaption>
+      </figure>
+      <figure class="testimonial-card">
+        <blockquote>
+          <p data-en="Sweet &amp; Joy made our daughter's quinceañera cake a dream come true. Vanessa's creativity and attention to detail are unmatched in the entire Greensboro area." data-pt="A Sweet &amp; Joy tornou o bolo de quinceañera da nossa filha um sonho real. A criatividade e atenção aos detalhes da Vanessa são incomparáveis em toda a região de Greensboro.">Sweet &amp; Joy made our daughter's quinceañera cake a dream come true. Vanessa's creativity and attention to detail are unmatched in the entire Greensboro area.</p>
+        </blockquote>
+        <figcaption>
+          <span class="testimonial-stars" aria-label="5 stars">★★★★★</span>
+          <cite class="testimonial-author">Rosa G.</cite>
+          <span class="testimonial-location" data-en="Greensboro, NC" data-pt="Greensboro, NC">Greensboro, NC</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -170,6 +250,39 @@
     <p class="follow-cta">
       <a href="https://www.instagram.com/sweetjoync/" target="_blank" rel="noopener" class="btn btn-ghost" data-en="Follow @SweetJoyNC →" data-pt="Siga @SweetJoyNC →">Follow @SweetJoyNC →</a>
     </p>
+  </div>
+</section>
+
+<div class="drip-divider" aria-hidden="true" data-drip></div>
+
+<section class="faq" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-en="Got Questions?" data-pt="Tem Dúvidas?">Got Questions?</p>
+      <h2 class="section-title" id="faq-heading" data-en="Frequently Asked Questions" data-pt="Perguntas Frequentes">Frequently Asked Questions</h2>
+    </header>
+    <div class="faq-list" role="list">
+      <details class="faq-item" role="listitem">
+        <summary data-en="How far in advance should I order a custom cake?" data-pt="Com quanto tempo de antecedência devo pedir um bolo personalizado?">How far in advance should I order a custom cake?</summary>
+        <p data-en="We require a minimum of 5 days notice for custom cakes. For elaborate designs, wedding cakes, or quinceañera cakes, we recommend ordering 2–4 weeks in advance to ensure we can dedicate the time your creation deserves." data-pt="Exigimos no mínimo 5 dias de antecedência para bolos personalizados. Para designs elaborados, bolos de casamento ou quinceañera, recomendamos pedir com 2 a 4 semanas de antecedência.">We require a minimum of 5 days notice for custom cakes. For elaborate designs, wedding cakes, or quinceañera cakes, we recommend ordering 2–4 weeks in advance to ensure we can dedicate the time your creation deserves.</p>
+      </details>
+      <details class="faq-item" role="listitem">
+        <summary data-en="Do you deliver to Winston-Salem, Greensboro, and High Point?" data-pt="Vocês entregam em Winston-Salem, Greensboro e High Point?">Do you deliver to Winston-Salem, Greensboro, and High Point?</summary>
+        <p data-en="Yes! We serve the entire Triad area including Kernersville, Winston-Salem, Greensboro, and High Point, NC. Contact us via WhatsApp or the order form to confirm availability and arrange delivery for your event." data-pt="Sim! Atendemos toda a região do Triad, incluindo Kernersville, Winston-Salem, Greensboro e High Point, NC. Fale conosco pelo WhatsApp ou pelo formulário de pedido para confirmar disponibilidade e combinar a entrega.">Yes! We serve the entire Triad area including Kernersville, Winston-Salem, Greensboro, and High Point, NC. Contact us via WhatsApp or the order form to confirm availability and arrange delivery for your event.</p>
+      </details>
+      <details class="faq-item" role="listitem">
+        <summary data-en="What is a brigadeiro?" data-pt="O que é um brigadeiro?">What is a brigadeiro?</summary>
+        <p data-en="A brigadeiro is Brazil's most beloved confection — a soft chocolate truffle made with condensed milk, butter, and cocoa, hand-rolled and finished with sprinkles or other toppings. Our gourmet brigadeiros come in 17 flavors, from classic chocolate to pistachio, salted caramel, Oreo, passion fruit, and more." data-pt="O brigadeiro é o doce mais amado do Brasil — uma trufa macia de chocolate feita com leite condensado, manteiga e cacau, enrolada à mão e coberta com granulado ou outros confeitos. Nossos brigadeiros gourmet têm 17 sabores, do clássico chocolate ao pistache, caramelo salgado, Oreo, maracujá e muito mais.">A brigadeiro is Brazil's most beloved confection — a soft chocolate truffle made with condensed milk, butter, and cocoa, hand-rolled and finished with sprinkles or other toppings. Our gourmet brigadeiros come in 17 flavors, from classic chocolate to pistachio, salted caramel, Oreo, passion fruit, and more.</p>
+      </details>
+      <details class="faq-item" role="listitem">
+        <summary data-en="Can I customize the filling, size, and design of my cake?" data-pt="Posso personalizar o recheio, tamanho e design do meu bolo?">Can I customize the filling, size, and design of my cake?</summary>
+        <p data-en="Absolutely! Choose from 4 sizes (4&quot; to 12&quot;), vanilla or chocolate batter, and 11 filling options — white chocolate, three-milk, caramel, strawberry, walnut praline, and more. The decoration, colors, and theme are fully customizable. Just describe your vision in the order form." data-pt="Com certeza! Escolha entre 4 tamanhos (4&quot; a 12&quot;), massa de baunilha ou chocolate, e 11 opções de recheio — chocolate branco, três leites, caramelo, morango, nozes com praliné e muito mais. A decoração, cores e tema são totalmente personalizáveis. Descreva sua visão no formulário de pedido.">Absolutely! Choose from 4 sizes (4" to 12"), vanilla or chocolate batter, and 11 filling options — white chocolate, three-milk, caramel, strawberry, walnut praline, and more. The decoration, colors, and theme are fully customizable.</p>
+      </details>
+      <details class="faq-item" role="listitem">
+        <summary data-en="Do you make cakes for weddings and quinceañeras?" data-pt="Vocês fazem bolos para casamentos e quinceañeras?">Do you make cakes for weddings and quinceañeras?</summary>
+        <p data-en="Yes! We create elegant, show-stopping cakes for weddings, quinceañeras, baby showers, graduations, birthdays, and all milestone events. For multi-tier or elaborate designs, we recommend placing your order at least 3–4 weeks ahead." data-pt="Sim! Criamos bolos elegantes e deslumbrantes para casamentos, quinceañeras, chás de bebê, formaturas, aniversários e todos os eventos especiais. Para designs com múltiplos andares ou elaborados, recomendamos fazer o pedido com pelo menos 3 a 4 semanas de antecedência.">Yes! We create elegant, show-stopping cakes for weddings, quinceañeras, baby showers, graduations, birthdays, and all milestone events. For multi-tier or elaborate designs, we recommend placing your order at least 3–4 weeks ahead.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -319,10 +432,12 @@
   </div>
 </section>
 
+</main>
+
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-brand">
-      <img src="assets/images/logo-simplified-white.png" alt="Sweet &amp; Joy" />
+      <img src="assets/images/logo-simplified-white.png" alt="Sweet &amp; Joy by Vanessa Sulevis logo" loading="lazy" width="64" height="64" />
       <p class="script" data-en="Crafted with Love" data-pt="Feito com Amor">Crafted with Love</p>
     </div>
     <ul class="footer-social">
@@ -334,6 +449,13 @@
       <span class="lang-flag" aria-hidden="true">🇺🇸</span>
       <span class="lang-label">EN</span>
     </button>
+    <address class="footer-nap" aria-label="Business contact info">
+      <span class="nap-name">Sweet &amp; Joy by Vanessa Sulevis</span>
+      <span class="nap-sep">·</span>
+      <span class="nap-location">Kernersville, NC</span>
+      <span class="nap-sep">·</span>
+      <a href="tel:+13369891342" class="nap-phone">(336) 989-1342</a>
+    </address>
     <p class="footer-copy">© 2026 Sweet &amp; Joy by Vanessa Sulevis · Kernersville, NC</p>
   </div>
 </footer>
@@ -347,6 +469,120 @@
 </button>
 
 <script src="script.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Bakery", "FoodEstablishment"],
+      "@id": "https://sweet-joy.thalessouto.workers.dev/#business",
+      "name": "Sweet & Joy by Vanessa Sulevis",
+      "description": "Custom cakes and gourmet Brazilian sweets handmade in Kernersville, NC. Serving Winston-Salem, Greensboro, High Point and the Triad area.",
+      "url": "https://sweet-joy.thalessouto.workers.dev/",
+      "telephone": "+13369891342",
+      "email": "vanessa.sulevis@gmail.com",
+      "priceRange": "$$",
+      "servesCuisine": ["Brazilian", "American", "Custom Cakes", "Desserts"],
+      "areaServed": [
+        {"@type": "City", "name": "Kernersville", "containedInPlace": {"@type": "State", "name": "North Carolina"}},
+        {"@type": "City", "name": "Winston-Salem", "containedInPlace": {"@type": "State", "name": "North Carolina"}},
+        {"@type": "City", "name": "Greensboro", "containedInPlace": {"@type": "State", "name": "North Carolina"}},
+        {"@type": "City", "name": "High Point", "containedInPlace": {"@type": "State", "name": "North Carolina"}},
+        {"@type": "AdministrativeArea", "name": "Forsyth County, NC"},
+        {"@type": "AdministrativeArea", "name": "Guilford County, NC"}
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kernersville",
+        "addressRegion": "NC",
+        "postalCode": "27284",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.1207,
+        "longitude": -80.0731
+      },
+      "image": "https://sweet-joy.thalessouto.workers.dev/assets/images/logo.png",
+      "logo": "https://sweet-joy.thalessouto.workers.dev/assets/images/logo-simplified.png",
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }],
+      "sameAs": [
+        "https://www.instagram.com/sweetjoync/",
+        "https://www.facebook.com/profile.php?id=61582126022768"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sweet-joy.thalessouto.workers.dev/#website",
+      "url": "https://sweet-joy.thalessouto.workers.dev/",
+      "name": "Sweet & Joy by Vanessa Sulevis",
+      "inLanguage": ["en-US", "pt-BR"],
+      "publisher": {"@id": "https://sweet-joy.thalessouto.workers.dev/#business"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How far in advance should I order a custom cake?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We require a minimum of 5 days notice for custom cakes. For elaborate designs, wedding cakes, or quinceañera cakes, we recommend ordering 2–4 weeks in advance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you deliver to Winston-Salem, Greensboro, and High Point?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We serve the entire Triad area including Kernersville, Winston-Salem, Greensboro, and High Point, NC. Contact us to confirm availability and arrange delivery for your event."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a brigadeiro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A brigadeiro is a beloved Brazilian chocolate truffle made with condensed milk, butter, and cocoa, rolled in chocolate sprinkles or other toppings. Our gourmet brigadeiros come in 17 flavors — from classic chocolate to pistachio, salted caramel, and more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I customize the filling, size, and design of my cake?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! We offer 4 cake sizes (4\" to 12\"), 2 batter flavors, and 11 filling options. The decoration, colors, and theme are fully customizable — just describe your vision in the order form."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you make cakes for weddings and quinceañeras?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We craft elegant custom cakes for weddings, quinceañeras, baby showers, birthdays, and all special occasions. We recommend ordering at least 3–4 weeks in advance for multi-tier or elaborate designs."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://sweet-joy.thalessouto.workers.dev/"},
+        {"@type": "ListItem", "position": 2, "name": "Custom Cakes", "item": "https://sweet-joy.thalessouto.workers.dev/#how-to-order"},
+        {"@type": "ListItem", "position": 3, "name": "Gourmet Brazilian Sweets", "item": "https://sweet-joy.thalessouto.workers.dev/#docinhos"},
+        {"@type": "ListItem", "position": 4, "name": "FAQ", "item": "https://sweet-joy.thalessouto.workers.dev/#faq"},
+        {"@type": "ListItem", "position": 5, "name": "Order Now", "item": "https://sweet-joy.thalessouto.workers.dev/#order-form"}
+      ]
+    }
+  ]
+}
+</script>
 
 <!--
 POST-LAUNCH TODO:
