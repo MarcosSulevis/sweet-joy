@@ -445,6 +445,61 @@
     return { init };
   })();
 
+  // ---------- HERO CAROUSEL ----------
+  const heroCarousel = (() => {
+    const INTERVAL = 2500;
+    let timer = null;
+    let current = 0;
+    let slides = [];
+    let dots = [];
+
+    function goTo(idx) {
+      slides[current].classList.remove("is-active");
+      if (dots[current]) dots[current].classList.remove("is-active");
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add("is-active");
+      if (dots[current]) dots[current].classList.add("is-active");
+    }
+
+    function next() { goTo(current + 1); }
+
+    function start() {
+      clearInterval(timer);
+      timer = setInterval(next, INTERVAL);
+    }
+
+    function pause() { clearInterval(timer); }
+
+    function buildDots(container) {
+      const dotsEl = container.querySelector(".hero-carousel-dots");
+      if (!dotsEl) return;
+      slides.forEach((_, i) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "hero-dot" + (i === 0 ? " is-active" : "");
+        btn.setAttribute("aria-label", "Slide " + (i + 1));
+        btn.addEventListener("click", () => { pause(); goTo(i); start(); });
+        dotsEl.appendChild(btn);
+      });
+      dots = Array.from(dotsEl.querySelectorAll(".hero-dot"));
+    }
+
+    function init() {
+      const container = document.getElementById("heroCarousel");
+      if (!container) return;
+      slides = Array.from(container.querySelectorAll(".hero-slide"));
+      if (slides.length < 2) return;
+      buildDots(container);
+      container.addEventListener("mouseenter", pause);
+      container.addEventListener("mouseleave", start);
+      container.addEventListener("touchstart", pause, { passive: true });
+      container.addEventListener("touchend", () => { start(); }, { passive: true });
+      start();
+    }
+
+    return { init };
+  })();
+
   // ---------- INIT ----------
   document.addEventListener("DOMContentLoaded", () => {
     i18n.init();
@@ -452,6 +507,7 @@
     orderBuilder.bind();
     docinhosGrid.render();
     formHandler.bind();
+    heroCarousel.init();
     scrollReveal.init();
     utils.init();
   });

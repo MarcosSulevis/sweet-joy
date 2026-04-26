@@ -149,12 +149,28 @@ section { padding-block: var(--space-5); }
 .hero-sub { font-size: 1.15rem; max-width: 40ch; color: color-mix(in srgb, var(--color-accent) 75%, transparent); margin-bottom: var(--space-3); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .hero-seal { display: flex; justify-content: center; }
-.hero-seal img { width: min(360px, 80%); border-radius: 50%; box-shadow: var(--shadow-lg); }
+.hero-seal > img { width: min(360px, 80%); border-radius: 50%; box-shadow: var(--shadow-lg); }
 @media (min-width: 768px) {
   .hero-inner { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-5); }
   .hero-copy { padding-right: var(--space-3); }
-  .hero-seal img { width: 100%; max-width: 440px; }
+  .hero-seal > img { width: 100%; max-width: 440px; }
 }
+
+/* ===== HERO CAROUSEL ===== */
+.hero-carousel { position: relative; width: 100%; aspect-ratio: 4/5; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-lg); background: color-mix(in srgb, var(--color-primary) 18%, var(--color-cream)); }
+@media (min-width: 768px) { .hero-carousel { max-width: 440px; } }
+
+.hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.55s ease; will-change: opacity; }
+.hero-slide.is-active { opacity: 1; z-index: 1; }
+
+.hero-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; box-shadow: none; display: block; }
+.hero-slide--logo { display: flex; align-items: center; justify-content: center; }
+.hero-slide--logo img { width: 72%; height: auto; aspect-ratio: 1; border-radius: 50% !important; box-shadow: var(--shadow-md) !important; object-fit: cover; }
+
+.hero-carousel-dots { position: absolute; bottom: 14px; left: 0; right: 0; display: flex; justify-content: center; gap: 7px; z-index: 2; flex-wrap: wrap; padding: 0 var(--space-2); }
+.hero-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); border: 1.5px solid rgba(255,255,255,0.65); cursor: pointer; padding: 0; flex-shrink: 0; transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease); }
+.hero-dot.is-active { background: var(--color-white); transform: scale(1.35); }
+.hero-dot:hover:not(.is-active) { background: rgba(255,255,255,0.7); }
 
 /* ===== ABOUT ===== */
 .about-inner { display: grid; grid-template-columns: 1fr; gap: var(--space-4); align-items: center; }
