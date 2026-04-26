@@ -180,7 +180,7 @@
           date.closest(".field").classList.add("field--error"); ok = false;
         } else {
           const picked = new Date(date.value + "T00:00:00");
-          const minDate = new Date(); minDate.setHours(0, 0, 0, 0); minDate.setDate(minDate.getDate() + 7);
+          const minDate = new Date(); minDate.setHours(0, 0, 0, 0); minDate.setDate(minDate.getDate() + 5);
           if (picked < minDate) { date.closest(".field").classList.add("field--error"); ok = false; }
         }
       }
