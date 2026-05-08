@@ -357,9 +357,14 @@
             io.unobserve(e.target);
           }
         });
-      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      }, { threshold: 0.05 });
 
       document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+      // Fallback: force-reveal anything still hidden after 1.5s (iOS Safari safety net)
+      setTimeout(() => {
+        document.querySelectorAll(".reveal:not(.is-visible)").forEach(el => el.classList.add("is-visible"));
+      }, 1500);
     }
 
     return { init };
