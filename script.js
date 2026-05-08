@@ -3,23 +3,23 @@
 
   // ---------- DOCINHOS DATA ----------
   const DOCINHOS = [
-    { en: "Chocolate Brigadeiro w/ Vermicelli",    pt: "Brigadeiro de chocolate com Vermicelli", price: 80 },
-    { en: "Chocolate Brigadeiro w/ Granulé",       pt: "Brigadeiro de chocolate com Granulé",    price: 100 },
-    { en: "Coconut Brigadeiro",                    pt: "Brigadeiro de coco",                     price: 80 },
-    { en: "Two-Flavor Brigadeiro",                 pt: "Brigadeiro dois amores",                 price: 80 },
-    { en: "Peanut Brigadeiro",                     pt: "Brigadeiro de amendoim",                 price: 80 },
-    { en: "Ninho Milk Brigadeiro",                 pt: "Brigadeiro de ninho",                    price: 80 },
-    { en: "Strawberry Brigadeiro",                 pt: "Brigadeiro de morango (Nesquik)",        price: 80 },
-    { en: "Sicilian Lemon Brigadeiro",             pt: "Brigadeiro de limão siciliano",          price: 80 },
-    { en: "Oreo Brigadeiro",                       pt: "Brigadeiro de Oreo",                     price: 90 },
-    { en: "Churros Brigadeiro",                    pt: "Brigadeiro de churros",                  price: 90 },
-    { en: "Passion Fruit Brigadeiro",              pt: "Brigadeiro de maracujá",                 price: 90 },
-    { en: "Salted Caramel Brigadeiro",             pt: "Brigadeiro de caramelo salgado",         price: 90 },
-    { en: "Walnut Brigadeiro",                     pt: "Brigadeiro de nozes",                    price: 100 },
-    { en: "Pistachio Brigadeiro",                  pt: "Brigadeiro de Pistache",                 price: 100 },
-    { en: "Grape Surprise",                        pt: "Surpresa de uva",                        price: 100 },
-    { en: "Alcoholic Brigadeiro",                  pt: "Brigadeiro alcoólico",                   price: 100 },
-    { en: "Chocolate Cups w/ Filling",             pt: "Copinhos de chocolate com recheio",      price: 100 }
+    { en: "Chocolate Brigadeiro w/ Vermicelli",    pt: "Brigadeiro de chocolate com Vermicelli", price: 80,  img: "assets/images/gourmet sweets/chocolate-brigadeiro-vermicelli.jpg" },
+    { en: "Chocolate Brigadeiro w/ Granulé",       pt: "Brigadeiro de chocolate com Granulé",    price: 100, img: "assets/images/gourmet sweets/chocolate-brigadeiro-granule.jpg" },
+    { en: "Coconut Brigadeiro",                    pt: "Brigadeiro de coco",                     price: 80,  img: "assets/images/gourmet sweets/coconut.jpg" },
+    { en: "Two-Flavor Brigadeiro",                 pt: "Brigadeiro dois amores",                 price: 80,  img: "assets/images/gourmet sweets/two-flavor.jpg" },
+    { en: "Peanut Brigadeiro",                     pt: "Brigadeiro de amendoim",                 price: 80,  img: "assets/images/gourmet sweets/peanut.jpg" },
+    { en: "Ninho Milk Brigadeiro",                 pt: "Brigadeiro de ninho",                    price: 80,  img: "assets/images/gourmet sweets/ninho.jpg" },
+    { en: "Strawberry Brigadeiro",                 pt: "Brigadeiro de morango (Nesquik)",        price: 80,  img: "assets/images/gourmet sweets/strawberry.jpg" },
+    { en: "Sicilian Lemon Brigadeiro",             pt: "Brigadeiro de limão siciliano",          price: 80,  img: "assets/images/gourmet sweets/sicilian-lemon.jpg" },
+    { en: "Oreo Brigadeiro",                       pt: "Brigadeiro de Oreo",                     price: 90,  img: "assets/images/gourmet sweets/oreo.jpg" },
+    { en: "Churros Brigadeiro",                    pt: "Brigadeiro de churros",                  price: 90,  img: "assets/images/gourmet sweets/churros.jpg" },
+    { en: "Passion Fruit Brigadeiro",              pt: "Brigadeiro de maracujá",                 price: 90,  img: "assets/images/gourmet sweets/passion-fruit.jpg" },
+    { en: "Salted Caramel Brigadeiro",             pt: "Brigadeiro de caramelo salgado",         price: 90,  img: "assets/images/gourmet sweets/salted-caramel.jpg" },
+    { en: "Walnut Brigadeiro",                     pt: "Brigadeiro de nozes",                    price: 100, img: null },
+    { en: "Pistachio Brigadeiro",                  pt: "Brigadeiro de Pistache",                 price: 100, img: "assets/images/gourmet sweets/pistachio.jpg" },
+    { en: "Grape Surprise",                        pt: "Surpresa de uva",                        price: 100, img: "assets/images/gourmet sweets/grape-surprise.jpg" },
+    { en: "Alcoholic Brigadeiro",                  pt: "Brigadeiro alcoólico",                   price: 100, img: null },
+    { en: "Chocolate Cups w/ Filling",             pt: "Copinhos de chocolate com recheio",      price: 100, img: "assets/images/gourmet sweets/chocolate-cups.jpg" }
   ];
 
   // ---------- ORDER BUILDER ----------
@@ -110,7 +110,9 @@
       if (!grid) return;
       grid.innerHTML = DOCINHOS.map(d => `
         <article class="product-card">
-          <div class="product-thumb" aria-hidden="true">Photo</div>
+          <div class="product-thumb"${d.img ? "" : ' aria-hidden="true"'}>
+            ${d.img ? `<img src="${escapeAttr(d.img)}" alt="${escapeAttr(d.en)} — Sweet &amp; Joy" loading="lazy">` : "Photo"}
+          </div>
           <div class="product-body">
             <h3 class="product-name" data-en="${escapeHtml(d.en)}" data-pt="${escapeHtml(d.pt)}">${escapeHtml(d.en)}</h3>
             <span class="price-badge">$${d.price} / 100</span>
