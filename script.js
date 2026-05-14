@@ -295,10 +295,9 @@
         statusEl.hidden = false;
         statusEl.className = "form-status is-success";
         statusEl.innerHTML = tr(
-          `Thank you! Your order request is in Vanessa's inbox. We've also opened WhatsApp so you can confirm directly — just tap Send. <a href="${waUrl}" target="_blank" rel="noopener">Open WhatsApp</a>`,
-          `Obrigada! Seu pedido já está na caixa da Vanessa. Também abrimos o WhatsApp para você confirmar direto — é só tocar em Enviar. <a href="${waUrl}" target="_blank" rel="noopener">Abrir WhatsApp</a>`
+          `Thank you! Your order request is in Vanessa's inbox. <a class="wa-confirm-btn" href="${waUrl}" target="_blank" rel="noopener">💬 Confirm on WhatsApp</a>`,
+          `Obrigada! Seu pedido já está na caixa da Vanessa. <a class="wa-confirm-btn" href="${waUrl}" target="_blank" rel="noopener">💬 Confirmar pelo WhatsApp</a>`
         );
-        window.open(waUrl, "_blank", "noopener");
         getForm().reset();
         showConditionals();
         statusEl.scrollIntoView({ behavior: "smooth", block: "center" });

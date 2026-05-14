@@ -253,6 +253,8 @@ section { padding-block: var(--space-5); }
 .form-status.is-error { background: color-mix(in srgb, var(--color-error) 10%, transparent); color: var(--color-error); border: 1px solid color-mix(in srgb, var(--color-error) 50%, transparent); }
 .form-status a { color: inherit; text-decoration: underline; font-weight: 500; }
 .form-status a:hover { opacity: 0.8; }
+.wa-confirm-btn { display: inline-block; margin-top: 0.75rem; padding: 0.55rem 1.25rem; background: #25D366; color: #fff !important; text-decoration: none !important; border-radius: var(--radius-md); font-weight: 600; font-size: 0.95rem; }
+.wa-confirm-btn:hover { opacity: 0.88; }
 
 /* ===== INSTAGRAM ===== */
 .behold-widget { min-height: 280px; display: grid; place-items: center; background: var(--color-cream); border: 1px dashed color-mix(in srgb, var(--color-primary) 35%, transparent); border-radius: var(--radius-md); padding: var(--space-4); color: color-mix(in srgb, var(--color-accent) 55%, transparent); font-size: 0.95rem; text-align: center; margin-bottom: var(--space-4); }
