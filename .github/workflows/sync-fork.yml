@@ -13,6 +13,10 @@ jobs:
         with:
           fetch-depth: 0
       - name: Push to MarcosSulevis fork
+        env:
+          MARCOS_TOKEN: ${{ secrets.MARCOS_SYNC_TOKEN }}
         run: |
-          git remote add fork https://x-access-token:${{ secrets.MARCOS_SYNC_TOKEN }}@github.com/MarcosSulevis/sweet-joy.git
+          git config --global user.email "sync-bot@sweetjoycakes.com"
+          git config --global user.name "Sweet Joy Sync"
+          git remote add fork https://MarcosSulevis:${MARCOS_TOKEN}@github.com/MarcosSulevis/sweet-joy.git
           git push fork main --force
