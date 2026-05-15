@@ -1,0 +1,17 @@
+name: Sync fork
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push to MarcosSulevis fork
+        run: |
+          git remote add fork https://x-access-token:${{ secrets.MARCOS_SYNC_TOKEN }}@github.com/MarcosSulevis/sweet-joy.git
+          git push fork main --force
