@@ -16,6 +16,7 @@ jobs:
         env:
           MARCOS_TOKEN: ${{ secrets.MARCOS_SYNC_TOKEN }}
         run: |
+          git config --global --unset-all http.https://github.com/.extraheader || true
           git push https://MarcosSulevis:${MARCOS_TOKEN}@github.com/MarcosSulevis/sweet-joy.git HEAD:main --force
 
       - name: Trigger Cloudflare deploy
