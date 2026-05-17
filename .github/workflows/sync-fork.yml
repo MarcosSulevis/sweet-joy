@@ -12,15 +12,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Sync fork via GitHub API
+      - name: Push to MarcosSulevis repo
         env:
           MARCOS_TOKEN: ${{ secrets.MARCOS_SYNC_TOKEN }}
         run: |
-          curl -X POST \
-            -H "Authorization: token ${MARCOS_TOKEN}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/MarcosSulevis/sweet-joy/merge-upstream \
-            -d '{"branch":"main"}'
+          git push https://MarcosSulevis:${MARCOS_TOKEN}@github.com/MarcosSulevis/sweet-joy.git HEAD:main --force
 
       - name: Trigger Cloudflare deploy
         run: |
